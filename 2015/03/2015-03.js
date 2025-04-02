@@ -1,7 +1,7 @@
 var fs = require('fs')
 var data = fs.readFileSync('2015/03/2015-03.data').toString()
 
-function floors(directions) {
+function getHouses(directions) {
   let x = 0
   let y = 0
 
@@ -20,4 +20,4 @@ function floors(directions) {
   return houses.size
 }
 
-console.log(floors(data))
+console.log(getHouses(data))

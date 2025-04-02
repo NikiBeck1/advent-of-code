@@ -1,7 +1,7 @@
 var fs = require('fs')
 var data = fs.readFileSync('2015/02/2015-02.data').toString()
 
-function floors(square) {
+function calculatePaper(square) {
   // Grouping the values
   let grouped = square
     .trim()
@@ -17,7 +17,7 @@ function floors(square) {
     })
     .reduce((acc, val) => acc + val, 0)
 
-  // Sorting values to find each side and the smallest value
+  // Sorting values to find each side
   let length = grouped.map((singleGroup) => singleGroup[0] * singleGroup[1] * 2)
   let width = grouped.map((singleGroup) => singleGroup[1] * singleGroup[2] * 2)
   let height = grouped.map((singleGroup) => singleGroup[0] * singleGroup[2] * 2)
@@ -31,4 +31,4 @@ function floors(square) {
   return sum
 }
 
-console.log(floors(data))
+console.log(calculatePaper(data))

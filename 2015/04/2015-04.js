@@ -5,15 +5,14 @@ function md5(str) {
   return crypto.createHash('md5').update(str).digest('hex')
 }
 
-function floors() {
+function floors(num, code) {
   let index = 0
-  let secretCode = 'ckczppom'
 
   while (true) {
-    let attempt = secretCode + index
+    let attempt = code + index
     let hash = md5(attempt)
 
-    if (hash.startsWith('00000')) {
+    if (hash.startsWith(num)) {
       return index
     }
 
@@ -21,4 +20,4 @@ function floors() {
   }
 }
 
-console.log(floors())
+console.log(floors('00000', 'ckczppom'))

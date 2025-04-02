@@ -1,27 +1,37 @@
 var fs = require('fs')
 var data = fs.readFileSync('2015/06/2015-06.data').toString()
 
-function floors(str) {
+function lightCount(str) {
+  let grid = Array.from({ length: 1000 }, () => Array(1000).fill(false))
   let instructions = str.trim().split('\n')
-  let totalLights = []
-  let isToggle = true
 
   for (let line of instructions) {
-    let lightsOff = /\boff\b/i.test(line)
-    let lightsOn = /\bon\b/i.test(line)
-    let lightsToggle = /\btoggle\b/i.test(line)
-    let numbers = (line.match(/\d+/g) || []).map(Number)
+    let match = line.match(/(\d+),(\d+) through (\d+),(\d+)/)
+    if (!match) continue
 
-    if (lightsOff) {
-      totalLights.push(numbers[1] - numbers[0])
-    } else if (lightsOn) {
-      totalLights.push(numbers[1] + numbers[0])
-    } else if (lightsToggle === isToggle) {
-      totalLights.push(numbers[1] + numbers[0])
-      isToggle = !isToggle
+    const [x1, y1, x2, y2] = match.slice(1).map(Number)
+
+    for (let x = x1; x <= x2; x++) {
+      for (let y = y1; y <= y2; y++) {
+        if (line.startsWith('turn on')) {
+          grid[x][y] = true
+        } else if (line.startsWith('turn off')) {
+          grid[x][y] = false
+        } else if (line.startsWith('toggle')) {
+          grid[x][y] = !grid[x][y]
+        }
+      }
     }
   }
-  return totalLights
+
+  let onCount = 0
+  for (let row of grid) {
+    for (let light of row) {
+      if (light) onCount++
+    }
+  }
+
+  return onCount
 }
 
-console.log(floors(data))
+console.log(lightCount(data))

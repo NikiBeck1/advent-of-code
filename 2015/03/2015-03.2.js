@@ -1,7 +1,7 @@
 var fs = require('fs')
 var data = fs.readFileSync('2015/03/2015-03.data').toString()
 
-function floors(directions) {
+function santaTurn(directions) {
   let santa = [0, 0]
   let roboSanta = [0, 0]
   let isSantaTurn = true
@@ -24,4 +24,4 @@ function floors(directions) {
   return houses.size
 }
 
-console.log(floors(data))
+console.log(santaTurn(data))
