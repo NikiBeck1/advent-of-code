@@ -1,0 +1,20 @@
+scalar - means we have 1 of something
+(number, string)
+
+list - have 0 or more scalars
+(array, stack, heap)
+
+map - 2 lists of scalars and each item in the first list has a corresponding item in the second list
+(object, hash, dictionary)
+
+* the item in the first list is called the key and the corresponding item in the second list is the value
+
+{
+    a:1,
+    b:'xyz'
+}
+
+you can always get a list of keys and the corresponding list of values
+given a key, you can always look up the corresponding value
+it is NOT certain that you can look up a key from a value
+each given key is unique

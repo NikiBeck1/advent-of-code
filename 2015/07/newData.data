@@ -1,0 +1,12 @@
+1674 -> b
+274 -> x
+274 AND 17 -> y
+b AND y -> z
+274 AND y -> ya
+b AND 17 -> yb
+254 AND bc -> cd
+bc AND 17 -> dc
+b -> c
+274 OR 17 -> m
+274 LOG -> te
+b RSHIFT 1 -> v
